@@ -10,7 +10,7 @@ describe RoutingEngine::Router do
     app.add '/two', TestRack::Two
     app.add '/three', TestRack::Two.new
 
-    app.add '/hello/:world', -> (env) {
+    app.add '/hello/:world', lambda { |env|
       [200, {}, "Hello #{env['router.params']['world']}!"]
     }
   end

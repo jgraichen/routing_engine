@@ -5,13 +5,13 @@ require 'routing_engine'
 
 module TestRack
   class One
-    def self.call(env)
+    def self.call(_env)
       [200, {}, 'Hello One!']
     end
   end
 
   class Two
-    def call(env)
+    def call(_env)
       [200, {}, 'Hello Two!']
     end
   end

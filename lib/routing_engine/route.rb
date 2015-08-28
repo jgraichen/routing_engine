@@ -3,7 +3,7 @@ module RoutingEngine
   class Route
     attr_reader :pattern
 
-    def initialize(pattern, target, **options)
+    def initialize(pattern, target, **_options)
       @pattern = Mustermann.new(pattern)
 
       if target.respond_to?(:call)
@@ -11,7 +11,7 @@ module RoutingEngine
       elsif target.method_defined?(:call)
         @target = target.new
       else
-        raise 'Invalid target'
+        fail 'Invalid target'
       end
     end
 
