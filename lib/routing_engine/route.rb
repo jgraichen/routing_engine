@@ -5,7 +5,14 @@ module RoutingEngine
 
     def initialize(pattern, target, **options)
       @pattern = Mustermann.new(pattern)
-      @target  = target
+
+      if target.respond_to?(:call)
+        @target = target
+      elsif target.method_defined?(:call)
+        @target = target.new
+      else
+        raise 'Invalid target'
+      end
     end
 
     def call(env)
