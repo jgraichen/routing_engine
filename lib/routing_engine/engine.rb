@@ -12,6 +12,7 @@ module RoutingEngine
 
       @routes.each_with_object([]) do |route, results|
         next unless (match = route.pattern.match(path))
+        next unless route.methods.empty? || route.methods.include?(method)
 
         results << Match.new(route, match)
       end

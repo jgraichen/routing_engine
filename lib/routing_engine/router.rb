@@ -1,6 +1,7 @@
 module RoutingEngine
   #
   class Router
+    EMPTY = ''.freeze
     ENV_PARAMS = 'router.params'.freeze
 
     def initialize

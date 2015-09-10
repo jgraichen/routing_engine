@@ -15,4 +15,10 @@ module TestRack
       [200, {}, 'Hello Two!']
     end
   end
+
+  Pong = Struct.new(:reply) do
+    def call(_env)
+      [200, {}, reply]
+    end
+  end
 end

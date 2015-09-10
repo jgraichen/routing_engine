@@ -1,10 +1,11 @@
 module RoutingEngine
   #
   class Route
-    attr_reader :pattern
+    attr_reader :pattern, :methods
 
-    def initialize(pattern, target, **_options)
+    def initialize(pattern, target, methods: [])
       @pattern = Mustermann.new(pattern)
+      @methods = Array(methods).map(&:to_s).map(&:upcase)
 
       if target.respond_to?(:call)
         @target = target
